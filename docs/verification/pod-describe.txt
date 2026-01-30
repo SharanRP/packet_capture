@@ -1,0 +1,56 @@
+Name:             test-pod
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             kind-control-plane/172.22.0.2
+Start Time:       Sat, 31 Jan 2026 00:19:25 +0530
+Labels:           app=test-pod
+Annotations:      tcpdump.antrea.io: 5
+Status:           Running
+IP:               10.244.0.6
+IPs:
+  IP:  10.244.0.6
+Containers:
+  test-pod:
+    Container ID:  containerd://75f4bbf279d4324aef13619dca9fac387e97cce2db06eec545ce9f84a0016459
+    Image:         alpine:latest
+    Image ID:      docker.io/library/alpine@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+      apk add --no-cache curl && while true; do curl -I https://www.google.com; sleep 1; done
+    State:          Running
+      Started:      Sat, 31 Jan 2026 00:19:39 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-4rtgl (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-4rtgl:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  4m11s  default-scheduler  Successfully assigned default/test-pod to kind-control-plane
+  Normal  Pulling    4m11s  kubelet            spec.containers{test-pod}: Pulling image "alpine:latest"
+  Normal  Pulled     3m57s  kubelet            spec.containers{test-pod}: Successfully pulled image "alpine:latest" in 13.968s (13.968s including waiting). Image size: 3872672 bytes.
+  Normal  Created    3m57s  kubelet            spec.containers{test-pod}: Container created
+  Normal  Started    3m57s  kubelet            spec.containers{test-pod}: Container started

@@ -1,0 +1,23 @@
+# Binaries
+simple-packet-capture
+test-build
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Build artifacts
+/bin/
+/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Go
+vendor/
+.env
